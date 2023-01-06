@@ -2,7 +2,16 @@ import React, { useState, useContext } from "react";
 
 import { Ionicons } from "@expo/vector-icons";
 import * as Animatable from "react-native-animatable";
-import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, useColorScheme, View } from "react-native";
+import {
+    Image,
+    SafeAreaView,
+    Text,
+    TextInput,
+    TextInputBase,
+    TouchableOpacity,
+    useColorScheme,
+    View,
+} from "react-native";
 
 import Seta from "../../assets/icons/seta-direita.png";
 
@@ -15,8 +24,8 @@ import { storeLocalData } from "../../services/LocalStorageService";
 
 export function Login({ navigation }) {
     const [login, setLogin] = useState("");
-    const [hidePass, setHidePass] = useState(true);
     const [password, setPassword] = useState("");
+    const [hidePass, setHidePass] = useState(true);
     const [carregando, setCarregando] = useState<boolean>(true);
     const { armazenaDadosUsuarioLogin } = useContext(DataContext);
 
@@ -36,27 +45,20 @@ export function Login({ navigation }) {
 
             if (retorno.status === 200) {
                 tokenJwt = retorno.data;
-
                 armazenaDadosUsuarioLogin(tokenJwt["jwt-token"]);
 
                 storeLocalData("user", tokenJwt);
 
-                navigation.navigate("SplashScreen");
+                navigation.navigate("Home");
             }
         } catch (error) {
             Alerta("Oops!", "Login ou senha errados");
         }
     };
-
     return (
         <View style={[styles.container, themeContainerStyle]}>
             <Logo />
             <SafeAreaView>
-                <Animatable.View
-                    animation={"fadeInLeft"}
-                    delay={500}
-                    style={[styles.containerTitulo, themeContainerStyle]}
-                ></Animatable.View>
                 <Animatable.View animation="fadeInUp" style={styles.containerImput}>
                     <TextInput
                         placeholder="Login"
@@ -65,7 +67,6 @@ export function Login({ navigation }) {
                         value={login}
                         accessibilityLabel="Insira o seu login aqui."
                     />
-
                     <TextInput
                         placeholder="Senha"
                         secureTextEntry={hidePass}
