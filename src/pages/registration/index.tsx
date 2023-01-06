@@ -2,16 +2,7 @@ import React, { useState } from "react";
 
 import * as Animatable from "react-native-animatable";
 import { Ionicons } from "@expo/vector-icons";
-import {
-    Image,
-    ImageBackground,
-    SafeAreaView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    useColorScheme,
-    View,
-} from "react-native";
+import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, useColorScheme, View } from "react-native";
 
 import { styles } from "./styles";
 import { Alerta } from "../../components/alert";

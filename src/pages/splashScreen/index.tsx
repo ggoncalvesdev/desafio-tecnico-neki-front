@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { Image, Text, TouchableOpacity, useColorScheme, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -27,7 +27,7 @@ export function SplashScreen({ navigation }) {
             }
             armazenaDadosUsuarioLogin(response["jwt-token"]);
 
-            navigation.navigate("Login");
+            navigation.navigate("Home");
         } catch (error) {}
     };
 

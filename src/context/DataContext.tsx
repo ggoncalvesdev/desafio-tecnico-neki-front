@@ -1,14 +1,14 @@
 import jwt_decode from "jwt-decode";
 import React, { createContext, useState } from "react";
 
-import { DadosUsuarioLoginType } from "../models/DadosUsuarioLoginType";
+import { UserLoginType } from "../models/UserLoginType";
 
 //criando contexto
 export const DataContext = createContext({});
 
 //criando provider
 export const DataProvider = ({ children }) => {
-    const [dadosUsuarioLogin, setDadosUsuarioLogin] = useState<DadosUsuarioLoginType>();
+    const [dadosUsuarioLogin, setDadosUsuarioLogin] = useState<UserLoginType>();
 
     const armazenaDadosUsuarioLogin = (jwt: any) => {
         var tokenDecodificado: any = jwt_decode(jwt);
