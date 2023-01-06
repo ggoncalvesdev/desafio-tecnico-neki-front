@@ -1,19 +1,21 @@
 import React, { useState, useContext } from "react";
 
+import { Ionicons } from "@expo/vector-icons";
 import * as Animatable from "react-native-animatable";
 import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, useColorScheme, View } from "react-native";
 
 import Seta from "../../assets/icons/seta-direita.png";
 
 import { styles } from "./styles";
+import { Logo } from "../../components/logo";
 import { Alerta } from "../../components/alert";
 import { DataContext } from "../../context/DataContext";
 import authService from "../../services/Api/Request/authService";
 import { storeLocalData } from "../../services/LocalStorageService";
-import { Logo } from "../../components/logo";
 
 export function Login({ navigation }) {
     const [login, setLogin] = useState("");
+    const [hidePass, setHidePass] = useState(true);
     const [password, setPassword] = useState("");
     const [carregando, setCarregando] = useState<boolean>(true);
     const { armazenaDadosUsuarioLogin } = useContext(DataContext);
@@ -66,16 +68,26 @@ export function Login({ navigation }) {
 
                     <TextInput
                         placeholder="Senha"
+                        secureTextEntry={hidePass}
                         style={styles.input}
-                        secureTextEntry={true}
                         onChangeText={setPassword}
                         value={password}
                         accessibilityLabel="Insira sua senha aqui."
                     />
-
+                    <TouchableOpacity style={styles.eyevisible} onPress={() => setHidePass(!hidePass)}>
+                        {hidePass ? (
+                            <>
+                                <Ionicons name="eye-off-outline" size={24} color="#0050AF" />
+                            </>
+                        ) : (
+                            <>
+                                <Ionicons name="eye-outline" size={24} color="#0050AF" />
+                            </>
+                        )}
+                    </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.botao}
-                        onPress={() => navigation.navigate("Cadastro")}
+                        onPress={() => navigation.navigate("Registration")}
                         accessibilityLabel="Não tem um cadastro? Clique aqui para criar um."
                     >
                         <Text style={[styles.textoLink, themeTextStyle]}>Não possuo cadastro</Text>

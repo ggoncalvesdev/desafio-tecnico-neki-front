@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     },
     containerImput: {
         paddingHorizontal: 40,
-        bottom: 140,
+        bottom: 155,
     },
     titulo: {
         textAlign: "center",
@@ -51,6 +51,15 @@ export const styles = StyleSheet.create({
         shadowRadius: 4.65,
 
         elevation: 6,
+    },
+    eyevisible: {
+        position: "absolute",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        right: 55,
+        bottom: 97,
+        width: 50,
     },
     textoLink: {
         fontSize: 15,

@@ -5,11 +5,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { Button, Icon } from "react-native-elements";
 
+import { DataProvider } from "../../context/DataContext";
+
 import { Login } from "../../pages/login";
 import { UserList } from "../../pages/userList";
 import { UserForm } from "../../pages/userForm";
 import { SplashScreen } from "../../pages/splashScreen";
-import { DataProvider } from "../../context/DataContext";
+import { Registration } from "../../pages/registration";
 
 function NavigateScreen() {
     const Stack = createNativeStackNavigator();
@@ -18,6 +20,7 @@ function NavigateScreen() {
             <Stack.Navigator initialRouteName="SplashScreen">
                 <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+                <Stack.Screen name="Registration" component={Registration} options={{ headerShown: false }} />
                 <Stack.Screen
                     name="UserList"
                     component={UserList}
