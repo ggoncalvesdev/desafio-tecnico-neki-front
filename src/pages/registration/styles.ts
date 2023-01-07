@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     },
     titulo: {
         textAlign: "center",
-        fontSize: 39,
+        fontSize: 70,
         fontWeight: "bold",
     },
     subTitulo: {

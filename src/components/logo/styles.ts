@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    logoNekiBook: {
+    logoAgile: {
         alignSelf: "center",
         bottom: 100,
     },

@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#22354F",
     },
-    livro: {
+    skill: {
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -40,24 +40,34 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    imgLivros: {
-        width: 380,
-        height: 400,
+    imgSkill: {
+        width: 280,
+        height: 300,
         borderRadius: 25,
-        marginTop: 25,
+        marginTop: 70,
     },
-    textLivro: {
+    textSkillContainer: {
         padding: 20,
         alignItems: "center",
     },
-    textoLivro: {
-        fontSize: 15,
+    name: {
+        fontSize: 30,
         color: "#22354F",
         marginTop: 10,
+        marginBottom: 3,
+    },
+    version: {
+        marginBottom: 10,
+        fontSize: 18,
+    },
+    description: {
+        fontSize: 15,
+        textAlign: "justify",
     },
     displayButton: {
-        flex: 2,
         flexDirection: "row",
+        alignSelf: "center",
+        top: 100,
     },
     containerButton: {
         backgroundColor: "#4FB889",

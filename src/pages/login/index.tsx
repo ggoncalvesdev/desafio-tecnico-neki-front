@@ -21,11 +21,13 @@ import { Alerta } from "../../components/alert";
 import { DataContext } from "../../context/DataContext";
 import authService from "../../services/Api/Request/authService";
 import { storeLocalData } from "../../services/LocalStorageService";
+import { CheckBox } from "react-native-elements";
 
 export function Login({ navigation }) {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [hidePass, setHidePass] = useState(true);
+    const [isSelected, setSelected] = useState(false);
     const [carregando, setCarregando] = useState<boolean>(true);
     const { armazenaDadosUsuarioLogin } = useContext(DataContext);
 
@@ -55,6 +57,7 @@ export function Login({ navigation }) {
             Alerta("Oops!", "Login ou senha errados");
         }
     };
+
     return (
         <View style={[styles.container, themeContainerStyle]}>
             <Logo />
@@ -93,13 +96,18 @@ export function Login({ navigation }) {
                     >
                         <Text style={[styles.textoLink, themeTextStyle]}>Não possuo cadastro</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.botao}
-                        onPress={() => navigation.navigate("RecuperarSenha")}
-                        accessibilityLabel="Esqueceu seu login? Clique aqui para recuperar-lo"
-                    >
-                        <Text style={[styles.textoLink, themeTextStyle]}>Esqueci meu login</Text>
-                    </TouchableOpacity>
+                    <CheckBox
+                        title="Salvar login"
+                        checkedIcon="check"
+                        uncheckedIcon="square-o"
+                        checkedColor="#0050AF"
+                        uncheckedColor="red"
+                        checked={isSelected}
+                        onPress={() => setSelected(!isSelected)}
+                        center
+                        textStyle={styles.checkBox}
+                        containerStyle={styles.checkBox}
+                    />
                 </Animatable.View>
                 <View style={styles.containerBotao}>
                     <TouchableOpacity

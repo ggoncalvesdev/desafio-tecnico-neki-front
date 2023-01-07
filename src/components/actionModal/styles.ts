@@ -15,16 +15,27 @@ export const styles = StyleSheet.create({
     darkThemeText: {
         color: "#fff",
     },
+    containerBusca: {
+        marginTop: 70,
+        marginHorizontal: 10,
+        marginBottom: 5,
+        padding: 3,
+        borderRadius: 2,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 0.22,
+
+        elevation: 1,
+    },
     status: {
         backgroundColor: "red",
-        /*   marginTop: 2,
-        borderRadius: 10,
-        fontSize: 18,
-        fontWeight: "bold", */
         color: "#252525",
     },
     infos: {
-        /* marginTop: 10, */
         flex: 0.5,
         flexDirection: "row",
         justifyContent: "space-evenly",
@@ -88,24 +99,7 @@ export const styles = StyleSheet.create({
         color: "#212F44",
         marginBottom: 30,
     },
-    livrohist: {
-        backgroundColor: "#2a88949b",
-        borderRadius: 20,
-        justifyContent: "center",
-        alignItems: "center",
-        margin: 15,
-    },
-    imgLivros: {
-        width: 140,
-        height: 200,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
     cardSkills: {
-        /* flexDirection: "row", */
-        /*   alignSelf: "flex-start", */
-        /*  textAlign: "center", */
         justifyContent: "center",
         width: 190,
         height: 190,
@@ -116,9 +110,6 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 20,
     },
-    /* header: {
-        flexDirection: "row",
-    }, */
     cardSkillImage: {
         backgroundColor: "#fff",
         alignSelf: "center",
@@ -127,11 +118,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 20,
     },
-    /*     test: {
-        justifyContent: "space-between",
-    }, */
     cardSkillName: {
-        /*     marginLeft: 100, */
         textAlign: "center",
         fontSize: 16,
         lineHeight: 35,
@@ -140,16 +127,7 @@ export const styles = StyleSheet.create({
     cardVersion: {
         textAlign: "center",
         marginBottom: 10,
-        /*    marginLeft: 10, */
     },
-    /*    cardDescription: {
-        alignSelf: "center",
-        marginLeft: 10,
-        width: 360,
-        lineHeight: 25,
-        fontSize: 14,
-        color: "#BBBBBB",
-    }, */
     imagens: {
         justifyContent: "space-around",
         marginBottom: 60,

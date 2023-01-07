@@ -20,8 +20,6 @@ export function SplashScreen({ navigation }) {
     const usuarioLogado = async () => {
         try {
             const response = JSON.parse(await retrieveLocalData("user"));
-
-            console.log("Valor do storage: " + response);
             if (response == null) {
                 navigation.navigate("Login");
             }

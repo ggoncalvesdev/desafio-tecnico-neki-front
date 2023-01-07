@@ -47,8 +47,7 @@ export function Registration({ navigation }) {
         <View style={[styles.container, themeContainerStyle]}>
             <SafeAreaView>
                 <Animatable.View animation={"fadeInLeft"} delay={500} style={styles.containerTitulo}>
-                    <Text style={[styles.subTitulo, themeTextStyle]}>Entre no App</Text>
-                    <Text style={[styles.titulo, themeTextStyle]}>NekiBook</Text>
+                    <Text style={[styles.titulo, themeTextStyle]}>Agile</Text>
                 </Animatable.View>
 
                 <Animatable.View animation="fadeInUp" style={styles.containerImput}>

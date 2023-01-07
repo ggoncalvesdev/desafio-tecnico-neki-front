@@ -15,7 +15,6 @@ export const DataProvider = ({ children }) => {
 
         //armazenando apenas a chave usuário do json decodificado
         var usuario = tokenDecodificado.user;
-        console.log("teste:" + tokenDecodificado.user);
 
         //está transferindo a string json contida dentro da variável usuario num objeto
         usuario = JSON.parse(usuario);
@@ -26,9 +25,6 @@ export const DataProvider = ({ children }) => {
             lastLoginDate: usuario?.lastLoginDate,
             token: jwt,
         });
-
-        console.log("DADOS DO USUARIO: " + JSON.stringify(usuario));
-        console.log("DADOS DO USUARIO: " + dadosUsuarioLogin);
     };
 
     return (

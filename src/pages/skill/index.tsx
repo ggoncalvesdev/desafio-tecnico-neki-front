@@ -38,8 +38,8 @@ export function PageSkill({ route, navigation }) {
                 console.log(JSON.stringify(resp.data));
                 console.log(resp.status);
                 if (resp.status === 201) {
-                    console.info("Livro cadastrado no banco de dados.");
-                    alert("Parabéns, seu livro foi cadastrado com sucesso!");
+                    console.info("Skill cadastrado no banco de dados.");
+                    alert("Parabéns, sua skill foi cadastrada com sucesso!");
                 }
             });
         } catch {
@@ -50,13 +50,13 @@ export function PageSkill({ route, navigation }) {
     return (
         <>
             <SafeAreaView style={[styles.container, themeContainerStyle]}>
-                <View style={styles.livro}>
-                    <Image style={styles.imgLivros} source={{ uri: imageSkill }}></Image>
+                <View style={styles.skill}>
+                    <Image style={styles.imgSkill} source={{ uri: imageSkill }}></Image>
                     <View>
-                        <View style={styles.textLivro}>
-                            <Text style={[styles.textoLivro, themeTextStyle]}>{nameSkill}</Text>
-                            <Text style={[styles.textoLivro, themeTextStyle]}>Versão: {versionSkill}</Text>
-                            <Text style={[styles.textoLivro]}>{descriptionSkill}</Text>
+                        <View style={styles.textSkillContainer}>
+                            <Text style={[styles.name, themeTextStyle]}>{nameSkill}</Text>
+                            <Text style={[styles.version, themeTextStyle]}>Versão: {versionSkill}</Text>
+                            <Text style={[styles.description, themeTextStyle]}>{descriptionSkill}</Text>
                         </View>
                     </View>
                 </View>
@@ -67,7 +67,7 @@ export function PageSkill({ route, navigation }) {
                         accessibilityLabel="Botão cancelar."
                         accessibilityHint="Não é a skill que estava procurando? Clique aqui para cancelar."
                     >
-                        <Text style={styles.button}>Cancelar</Text>
+                        <Text style={[styles.button, themeTextStyle]}>Cancelar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
@@ -77,7 +77,7 @@ export function PageSkill({ route, navigation }) {
                         accessibilityLabel="Botão cadastrar."
                         accessibilityHint="Essa é a skill que estava procurando? Clique aqui para adicioná-lo na sua lista."
                     >
-                        <Text style={styles.button}>Cadastrar</Text>
+                        <Text style={[styles.button, themeTextStyle]}>Cadastrar</Text>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>

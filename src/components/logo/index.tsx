@@ -10,7 +10,7 @@ export function Logo() {
         return (
             <Animatable.Image
                 animation="flipInY"
-                style={styles.logoNekiBook}
+                style={styles.logoAgile}
                 source={require("../../assets/icons/logo-agile.png")}
             />
         );
@@ -18,7 +18,7 @@ export function Logo() {
         return (
             <Animatable.Image
                 animation="flipInY"
-                style={styles.logoNekiBook}
+                style={styles.logoAgile}
                 source={require("../../assets/icons/logo-agile-branca.png")}
             />
         );
