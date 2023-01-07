@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import * as Animatable from "react-native-animatable";
 import { Ionicons } from "@expo/vector-icons";
+import * as Animatable from "react-native-animatable";
 import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, useColorScheme, View } from "react-native";
 
 import { styles } from "./styles";
@@ -11,9 +11,9 @@ import authService, { createUser } from "../../services/Api/Request/authService"
 
 export function Registration({ navigation }) {
     const [login, setLogin] = useState(null);
+    const [hidePass, setHidePass] = useState(true);
     const [password, setPassword] = useState(null);
     const [validPass, setValidPass] = useState(null);
-    const [hidePass, setHidePass] = useState(true);
 
     const colorScheme = useColorScheme();
     const themeTextStyle = colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;

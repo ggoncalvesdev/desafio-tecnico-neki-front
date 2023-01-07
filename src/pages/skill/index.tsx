@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, SafeAreaView, Text, TouchableOpacity, useColorScheme, View } from "react-native";
-import { Api } from "../../services/Api/api";
+
 import { styles } from "./styles";
+import { Api } from "../../services/Api/api";
 
 export function PageSkill({ route, navigation }) {
     const token = route.params.token;
@@ -12,10 +13,13 @@ export function PageSkill({ route, navigation }) {
     const versionSkill = route.params.version;
     const descriptionSkill = route.params.description;
 
+    const [knowledgeLevel, setKnowledgeLevel] = useState(0);
+
     /* console.log(JSON.stringify("retorno api: " + JSON.stringify(route.params.idUser))); */
 
     const colorScheme = useColorScheme();
     const themeTextStyle = colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+    const themeDescriptionStyle = colorScheme === "light" ? styles.lightThemeDescription : styles.darkThemeDescription;
     const themeContainerStyle = colorScheme === "light" ? styles.lightThemeContainer : styles.darkThemeContainer;
 
     const postSkill = async () => {
@@ -29,7 +33,7 @@ export function PageSkill({ route, navigation }) {
                     skill: {
                         id: idSkill,
                     },
-                    knowledgeLevel: 0,
+                    knowledgeLevel: knowledgeLevel,
                 },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -46,6 +50,16 @@ export function PageSkill({ route, navigation }) {
             console.log(Error);
         }
     };
+    const increaseLevel = () => {
+        if (knowledgeLevel < 10) {
+            setKnowledgeLevel(knowledgeLevel + 1);
+        }
+    };
+    const decreaseLevel = () => {
+        if (knowledgeLevel > 0) {
+            setKnowledgeLevel(knowledgeLevel - 1);
+        }
+    };
 
     return (
         <>
@@ -55,10 +69,19 @@ export function PageSkill({ route, navigation }) {
                     <View>
                         <View style={styles.textSkillContainer}>
                             <Text style={[styles.name, themeTextStyle]}>{nameSkill}</Text>
-                            <Text style={[styles.version, themeTextStyle]}>Versão: {versionSkill}</Text>
-                            <Text style={[styles.description, themeTextStyle]}>{descriptionSkill}</Text>
+                            <Text style={[styles.version, themeDescriptionStyle]}>Versão: {versionSkill}</Text>
+                            <Text style={[styles.description, themeDescriptionStyle]}>{descriptionSkill}</Text>
                         </View>
                     </View>
+                </View>
+                <Text style={[styles.level, themeDescriptionStyle]}>Level: {knowledgeLevel}</Text>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity onPress={() => decreaseLevel()}>
+                        <Text style={[styles.buttonUpdate, themeDescriptionStyle]}>-</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => increaseLevel()}>
+                        <Text style={[styles.buttonUpdate, themeDescriptionStyle]}>+</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.displayButton}>
                     <TouchableOpacity
@@ -67,7 +90,7 @@ export function PageSkill({ route, navigation }) {
                         accessibilityLabel="Botão cancelar."
                         accessibilityHint="Não é a skill que estava procurando? Clique aqui para cancelar."
                     >
-                        <Text style={[styles.button, themeTextStyle]}>Cancelar</Text>
+                        <Text style={[styles.button, , themeDescriptionStyle]}>Cancelar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => {
@@ -77,7 +100,7 @@ export function PageSkill({ route, navigation }) {
                         accessibilityLabel="Botão cadastrar."
                         accessibilityHint="Essa é a skill que estava procurando? Clique aqui para adicioná-lo na sua lista."
                     >
-                        <Text style={[styles.button, themeTextStyle]}>Cadastrar</Text>
+                        <Text style={[styles.button, themeDescriptionStyle]}>Cadastrar</Text>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>

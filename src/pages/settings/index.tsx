@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, useColorScheme, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { clearStorage } from "../../services/LocalStorageService";
+import { View, Text, useColorScheme, Image, TouchableOpacity } from "react-native";
 
-import LogoBranca from "../../assets/icons/logo-agile-branca.png";
-import LogoPreta from "../../assets/icons/logo-agile.png";
 import { styles } from "./styles";
+import LogoPreta from "../../assets/icons/logo-agile.png";
+import LogoBranca from "../../assets/icons/logo-agile-branca.png";
+import { clearStorage } from "../../services/LocalStorageService";
 
 export function Settings({ navigation }) {
     const colorScheme = useColorScheme();

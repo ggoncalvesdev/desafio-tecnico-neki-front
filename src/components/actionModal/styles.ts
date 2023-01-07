@@ -15,12 +15,15 @@ export const styles = StyleSheet.create({
     darkThemeText: {
         color: "#fff",
     },
+    container: {
+        flex: 1,
+    },
     containerBusca: {
-        marginTop: 70,
+        marginTop: 60,
         marginHorizontal: 10,
         marginBottom: 5,
         padding: 3,
-        borderRadius: 2,
+        borderRadius: 5,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -139,9 +142,6 @@ export const styles = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 50,
-    },
-    container: {
-        flex: 1,
     },
     content: {
         marginVertical: 85,

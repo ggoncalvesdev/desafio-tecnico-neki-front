@@ -9,6 +9,12 @@ export const styles = StyleSheet.create({
         backgroundColor: "#0050AF",
         tintColor: "#fff",
     },
+    lightThemeDescription: {
+        color: "#212F44",
+    },
+    darkThemeDescription: {
+        color: "#fff",
+    },
     lightThemeText: {
         color: "#0050AF",
     },
@@ -68,6 +74,28 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         alignSelf: "center",
         top: 100,
+    },
+    level: {
+        alignSelf: "flex-start",
+        marginLeft: 35,
+        fontSize: 20,
+        top: 30,
+        fontWeight: "bold",
+    },
+    buttonContainer: {
+        justifyContent: "space-evenly",
+        flexDirection: "row",
+        marginRight: 300,
+        top: 40,
+        left: 10,
+    },
+    buttonUpdate: {
+        backgroundColor: "#4FB889",
+        textAlign: "center",
+        width: 35,
+        fontSize: 25,
+        borderRadius: 50,
+        marginBottom: 10,
     },
     containerButton: {
         backgroundColor: "#4FB889",

@@ -1,21 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
+import { FlatList, Image, Text, TextInput, TouchableOpacity, useColorScheme } from "react-native";
 import { View } from "react-native-animatable";
-import {
-    SafeAreaView,
-    TouchableOpacity,
-    Text,
-    Image,
-    FlatList,
-    useColorScheme,
-    ImageBackground,
-    TextInput,
-} from "react-native";
 
-import { styles } from "./styles";
 import filter from "lodash.filter";
 import { DataContext } from "../../context/DataContext";
-import { Api } from "../../services/Api/api";
 import { SkillsType } from "../../models/SkillsType";
+import { Api } from "../../services/Api/api";
+import { styles } from "./styles";
 
 export function ActionModal({ navigation }) {
     const [query, setQuery] = useState("");
@@ -124,7 +115,7 @@ export function ActionModal({ navigation }) {
     };
     return (
         <>
-            <View style={styles.containerBusca}>
+            <View style={[styles.containerBusca, themeContainerStyle]}>
                 <TextInput
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -141,7 +132,6 @@ export function ActionModal({ navigation }) {
                     }}
                 />
             </View>
-
             <FlatList
                 style={[styles.container, themeContainerStyle]}
                 data={skill}

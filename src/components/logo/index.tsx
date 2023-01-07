@@ -1,6 +1,7 @@
 import React from "react";
-import { Appearance, useColorScheme } from "react-native";
+import { Appearance } from "react-native";
 import * as Animatable from "react-native-animatable";
+
 import { styles } from "./styles";
 
 export function Logo() {

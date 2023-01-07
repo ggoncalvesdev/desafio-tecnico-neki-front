@@ -1,27 +1,17 @@
 import React, { useState, useContext } from "react";
 
 import { Ionicons } from "@expo/vector-icons";
+import { CheckBox } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
-import {
-    Image,
-    SafeAreaView,
-    Text,
-    TextInput,
-    TextInputBase,
-    TouchableOpacity,
-    useColorScheme,
-    View,
-} from "react-native";
-
-import Seta from "../../assets/icons/seta-direita.png";
+import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, useColorScheme, View } from "react-native";
 
 import { styles } from "./styles";
 import { Logo } from "../../components/logo";
 import { Alerta } from "../../components/alert";
+import Seta from "../../assets/icons/seta-direita.png";
 import { DataContext } from "../../context/DataContext";
 import authService from "../../services/Api/Request/authService";
 import { storeLocalData } from "../../services/LocalStorageService";
-import { CheckBox } from "react-native-elements";
 
 export function Login({ navigation }) {
     const [login, setLogin] = useState("");
@@ -50,14 +40,20 @@ export function Login({ navigation }) {
                 armazenaDadosUsuarioLogin(tokenJwt["jwt-token"]);
 
                 storeLocalData("user", tokenJwt);
-
+                /* storageCheckBox(); */
                 navigation.navigate("Home");
             }
         } catch (error) {
             Alerta("Oops!", "Login ou senha errados");
         }
     };
-
+    /*   const storageCheckBox = () => {
+        storeLocalData("login", login);
+        console.log("Login armazenado no local storage");
+    };
+    const getSorageCheckBox = () => {
+        retrieveLocalData("login");
+    }; */
     return (
         <View style={[styles.container, themeContainerStyle]}>
             <Logo />
@@ -96,7 +92,7 @@ export function Login({ navigation }) {
                     >
                         <Text style={[styles.textoLink, themeTextStyle]}>Não possuo cadastro</Text>
                     </TouchableOpacity>
-                    <CheckBox
+                    {/* <CheckBox
                         title="Salvar login"
                         checkedIcon="check"
                         uncheckedIcon="square-o"
@@ -107,7 +103,7 @@ export function Login({ navigation }) {
                         center
                         textStyle={styles.checkBox}
                         containerStyle={styles.checkBox}
-                    />
+                    /> */}
                 </Animatable.View>
                 <View style={styles.containerBotao}>
                     <TouchableOpacity
