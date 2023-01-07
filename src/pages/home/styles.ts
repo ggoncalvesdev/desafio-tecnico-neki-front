@@ -9,12 +9,19 @@ export const styles = StyleSheet.create({
         backgroundColor: "#0050AF",
         tintColor: "#fff",
     },
+    lightThemeDescription: {
+        color: "#212F44",
+    },
+    darkThemeDescription: {
+        color: "#fff",
+    },
     lightThemeText: {
         color: "#0050AF",
     },
     darkThemeText: {
         color: "#fff",
     },
+
     container: {
         flex: 1,
     },
@@ -38,13 +45,15 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
     },
     imgSkill: {
+        marginBottom: 50,
         width: 100,
         height: 100,
         left: 10,
-        top: 30,
+        top: 10,
     },
     description: {
         textAlign: "justify",
+        marginBottom: 40,
         width: 250,
         top: 20,
         left: 20,
@@ -60,31 +69,19 @@ export const styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: "bold",
     },
-    level: {
-        alignSelf: "flex-start",
-        marginLeft: 25,
-        fontSize: 20,
-        top: 80,
-        fontWeight: "bold",
-    },
-    buttonContainer: {
-        justifyContent: "space-evenly",
-        flexDirection: "row",
-        marginRight: 300,
-        top: 90,
-        left: 10,
-    },
-    button: {
-        backgroundColor: "#4FB889",
-        textAlign: "center",
-        width: 35,
-        fontSize: 25,
-        borderRadius: 50,
-        marginBottom: 10,
-    },
     buttonAtualizarContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
         alignItems: "flex-end",
         marginRight: 15,
+        marginBottom: 10,
+    },
+    level: {
+        textAlign: "center",
+        width: 220,
+        fontSize: 18,
+        borderRadius: 10,
+        marginBottom: 15,
     },
     buttonAtualizar: {
         backgroundColor: "#4FB889",

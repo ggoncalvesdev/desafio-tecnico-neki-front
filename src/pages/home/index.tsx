@@ -9,29 +9,24 @@ import {
     useColorScheme,
     View,
 } from "react-native";
+import { styles } from "./styles";
+import { Api } from "../../services/Api/api";
 import { Alerta } from "../../components/alert";
 import { DataContext } from "../../context/DataContext";
-import { Api } from "../../services/Api/api";
-import { styles } from "./styles";
 
 export function Home({ navigation }) {
     const colorScheme = useColorScheme();
     const themeTextStyle = colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+    const themeDescriptionStyle = colorScheme === "light" ? styles.lightThemeDescription : styles.darkThemeDescription;
     const themeContainerStyle = colorScheme === "light" ? styles.lightThemeContainer : styles.darkThemeContainer;
 
-    const [dataSkillUser, setDataSkillUser] = useState([]);
-    /* const [level, setLevel] = useState(0); */
-    const [knowledgeLevel, setKnowledgeLevel] = useState(0);
     const [refreshing, setRefreshing] = useState(false);
+    const [dataSkillUser, setDataSkillUser] = useState([]);
 
     const { dadosUsuarioLogin } = useContext(DataContext);
 
     /* console.log(JSON.stringify("retorno api: " + JSON.stringify(dataSkillUser))); */
     useEffect(() => {
-        /*    dataSkillUser.map((knowledgeLevel) => {
-            console.log("knowledgeLevel: " + knowledgeLevel.knowledgeLevel);
-            setKnowledgeLevel(knowledgeLevel.knowledgeLevel);
-        }); */
         loadSkillUser();
     }, []);
 
@@ -64,17 +59,6 @@ export function Home({ navigation }) {
             navigation.navigate("Home");
         });
     };
-    const increaseLevel = () => {
-        if (knowledgeLevel < 10) {
-            setKnowledgeLevel(knowledgeLevel + 1);
-        }
-    };
-    const decreaseLevel = () => {
-        if (knowledgeLevel > 0) {
-            setKnowledgeLevel(knowledgeLevel - 1);
-        }
-    };
-
     const Item = ({ item, idUser }) => (
         <>
             {idUser != item.user.id ? (
@@ -97,23 +81,14 @@ export function Home({ navigation }) {
                                 imageStyle={{ borderRadius: 10 }}
                             ></ImageBackground>
                         )}
-                        <Text style={styles.description}>{item?.skill?.description}</Text>
-                    </View>
-                    <Text style={styles.level}>Level: {item?.knowledgeLevel}</Text>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity onPress={() => decreaseLevel()}>
-                            <Text style={styles.button}>-</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => increaseLevel()}>
-                            <Text style={styles.button}>+</Text>
-                        </TouchableOpacity>
+                        <Text style={[styles.description, themeDescriptionStyle]}>{item?.skill?.description}</Text>
                     </View>
                     <View style={styles.buttonAtualizarContainer}>
-                        <TouchableOpacity>
-                            <Text style={styles.buttonAtualizar}>Atualizar</Text>
-                        </TouchableOpacity>
+                        <Text style={[styles.level, themeTextStyle]}>
+                            Nível de conhecimento: {item?.knowledgeLevel}
+                        </Text>
                         <TouchableOpacity onPress={() => deleteSkill(item.id)}>
-                            <Text style={styles.buttonAtualizar}>Excluir</Text>
+                            <Text style={[styles.buttonAtualizar, themeDescriptionStyle]}>Excluir</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
