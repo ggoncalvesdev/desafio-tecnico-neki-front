@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
-import { Image, Text, TouchableOpacity, useColorScheme, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Image, Text, TouchableOpacity, useColorScheme, View } from "react-native";
 
 import { styles } from "./styles";
+import { Logo } from "../../components/logo";
 import Seta from "../../assets/icons/seta-direita.png";
 import { DataContext } from "../../context/DataContext";
 import { retrieveLocalData } from "../../services/LocalStorageService";
-import { Logo } from "../../components/logo";
 
 export function SplashScreen({ navigation }) {
     const { armazenaDadosUsuarioLogin } = useContext(DataContext);

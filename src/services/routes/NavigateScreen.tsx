@@ -5,20 +5,16 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { Image, View } from "react-native";
-import { Button, Icon } from "react-native-elements";
 
 import { DataProvider } from "../../context/DataContext";
 
 import { Home } from "../../pages/home";
 import { Login } from "../../pages/login";
-import { UserList } from "../../pages/userList";
-import { UserForm } from "../../pages/userForm";
-import { SplashScreen } from "../../pages/splashScreen";
-import { Registration } from "../../pages/registration";
-import { AddButton } from "../../components/buttonModal";
-import { ActionModal } from "../../components/actionModal/ActionModal";
 import { PageSkill } from "../../pages/skill";
 import { Settings } from "../../pages/settings";
+import { SplashScreen } from "../../pages/splashScreen";
+import { Registration } from "../../pages/registration";
+import { ActionModal } from "../../components/actionModal/ActionModal";
 
 function NavigateScreen() {
     const Stack = createNativeStackNavigator();
@@ -113,16 +109,6 @@ function BottomTab() {
         </Tab.Navigator>
     );
 }
-
-/* const screenOptions = {
-  headerStyle: {
-      backgroundColor: "#f4511e",
-  },
-  headerTitleStyle: {
-      fontWeight: "bold",
-  },
-  headerTintColor: "#fff",
-}; */
 export function Routes() {
     return (
         <>

@@ -1,6 +1,6 @@
 import React from "react";
-import { View, TouchableOpacity, ImageBackground, Modal } from "react-native";
 import { useState } from "react";
+import { View, TouchableOpacity, ImageBackground, Modal } from "react-native";
 
 import { styles } from "./styles";
 import { ActionModal } from "../actionModal/ActionModal";
