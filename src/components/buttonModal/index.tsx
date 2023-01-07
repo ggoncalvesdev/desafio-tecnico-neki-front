@@ -13,7 +13,7 @@ export function AddButton() {
             <TouchableOpacity
                 onPress={() => setVisibalModal(true)}
                 accessibilityLabel="Botão adicionar."
-                accessibilityHint="Quer adicionar um livro? Clique aqui."
+                accessibilityHint="Quer adicionar uma skill? Clique aqui."
             >
                 <ImageBackground
                     source={require("../../assets/icons/mais.png")}

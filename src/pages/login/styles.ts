@@ -58,12 +58,16 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         right: 55,
-        bottom: 97,
+        top: 98,
         width: 50,
     },
     textoLink: {
         fontSize: 15,
         fontWeight: "bold",
+    },
+    checkBox: {
+        backgroundColor: "#fff",
+        color: "#000",
     },
     containerBotao: {
         justifyContent: "center",

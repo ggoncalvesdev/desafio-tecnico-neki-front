@@ -12,14 +12,17 @@ import {
 } from "react-native";
 
 import { styles } from "./styles";
+import filter from "lodash.filter";
 import { DataContext } from "../../context/DataContext";
 import { Api } from "../../services/Api/api";
 import { SkillsType } from "../../models/SkillsType";
 
 export function ActionModal({ navigation }) {
-    /* const navigation = useNavigation(); */
-    const [skill, setSkill] = useState<SkillsType[]>([]);
+    const [query, setQuery] = useState("");
+    const [fullData, setFullData] = useState([]);
+
     const [input, setInput] = useState("");
+    const [skill, setSkill] = useState<SkillsType[]>([]);
 
     const colorScheme = useColorScheme();
     const themeTextStyle = colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
@@ -54,52 +57,18 @@ export function ActionModal({ navigation }) {
                     headers: { Authorization: `Bearer ${dadosUsuarioLogin?.token}` },
                 }).then((resp) => {
                     setSkill(resp.data);
-                    /*  resp.data.map((listSkill) => {
-                        setSkill(listSkill);
-                    }); */
-                    /*                     console.log(JSON.stringify("retorno api: " + JSON.stringify(resp.data)));
-                     */
+                    setFullData(resp.data);
+                    /* console.log(JSON.stringify("retorno api: " + JSON.stringify(resp.data))); */
                 });
             } catch (e) {
                 if (e.resp && e.resp.status === 404) {
-                    console.info("ISBN não encontrado na base de dados.", e);
-                    alert("Desculpe, este livro não foi encontrado na nossa base de dados.");
-                } else {
-                    console.error("Erro ao recuperar os dados do servidor.", e);
                     alert("Erro ao recuperar os dados do servidor, por favor, tente mais tarde.");
+                    console.error("Erro ao recuperar os dados do servidor.", e);
                 }
             }
         };
         loadSkill();
     }, []);
-    /* const Item = ({ item }) => (
-        <View style={styles.livrohist}>
-            <Text style={[styles.status, themeTextStyle]}>{item.name}</Text>
-            <TouchableOpacity
-                onPress={eventoPressionarBotao}
-                accessibilityLabel="Card capa do livro."
-                accessibilityHint="Quer saber mais detalhes do livro? Clique aqui."
-            >
-                {(item?.imageUrl != null && (
-                    <ImageBackground
-                        source={{ uri: item?.imageUrl }}
-                        style={styles.imgLivros}
-                        imageStyle={{ borderRadius: 25 }}
-                    ></ImageBackground>
-                )) || (
-                    <ImageBackground
-                        source={require("../../assets/img/imgButton.png")}
-                        style={styles.imgLivros}
-                        imageStyle={{ borderRadius: 25 }}
-                    ></ImageBackground>
-                )}
-            </TouchableOpacity>
-        </View>
-    ); */
-
-    /*     const renderItem = ({ item }) => {
-        return <Item item={item} />;
-    }; */
     const CardSkill = ({ item }) => {
         return (
             <>
@@ -117,13 +86,11 @@ export function ActionModal({ navigation }) {
                     }
                 >
                     <View style={styles.cardSkills}>
-                        {/* <View style={styles.header}> */}
                         {item?.imageUrl != null ? (
                             <Image style={styles.cardSkillImage} source={{ uri: item?.imageUrl }} />
                         ) : (
                             <Image style={styles.cardSkillImage} source={require("../../assets/img/user.jpg")} />
                         )}
-                        {/* <View style={styles.test}> */}
                         {item?.name != null ? (
                             <Text style={[styles.cardSkillName, themeTextStyle]}>{item?.name}</Text>
                         ) : (
@@ -134,26 +101,54 @@ export function ActionModal({ navigation }) {
                         ) : (
                             <Text style={[styles.cardVersion, themeTextStyle]}>Versão não encontrado.</Text>
                         )}
-                        {/* </View> */}
-                        {/*  </View> */}
-
-                        {/*  {item?.description != null ? (
-                            <Text style={[styles.cardDescription, themeTextStyle]}>{item.description}</Text>
-                        ) : (
-                            <Text style={[styles.cardDescription, themeTextStyle]}>Descrição não encontrado.</Text>
-                        )} */}
                     </View>
                 </TouchableOpacity>
             </>
         );
     };
+
+    const handleSearch = (text) => {
+        const formattedQuery = text;
+        const filteredData = filter(fullData, (user) => {
+            return contains(user, formattedQuery);
+        });
+        setSkill(filteredData);
+        setQuery(text);
+    };
+
+    const contains = ({ name, version }, query) => {
+        if (name.includes(query) || version.includes(query)) {
+            return true;
+        }
+        return false;
+    };
     return (
-        <FlatList
-            style={[styles.container, themeContainerStyle]}
-            data={skill}
-            renderItem={CardSkill}
-            keyExtractor={(item) => item.id}
-            numColumns={2}
-        />
+        <>
+            <View style={styles.containerBusca}>
+                <TextInput
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    clearButtonMode="always"
+                    value={query}
+                    onChangeText={(queryText) => handleSearch(queryText)}
+                    placeholder="Buscar Produtos"
+                    placeholderTextColor={"#C7C7C7"}
+                    style={{
+                        backgroundColor: "#ffff",
+                        paddingHorizontal: 10,
+                        padding: 6,
+                        borderRadius: 2,
+                    }}
+                />
+            </View>
+
+            <FlatList
+                style={[styles.container, themeContainerStyle]}
+                data={skill}
+                renderItem={CardSkill}
+                keyExtractor={(item) => item.id}
+                numColumns={2}
+            />
+        </>
     );
 }
