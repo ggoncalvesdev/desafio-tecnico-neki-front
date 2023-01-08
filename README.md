@@ -46,6 +46,7 @@ encrypted password
 # Tools
   
 * [Axios](https://www.npmjs.com/package/axios/v/0.27.2) for integration with the api.
+* [Ngrok](https://ngrok.com/) for create a public HTTPS URL
 * [Jwt Decode](https://www.npmjs.com/package/jwt-decode) for decode the JWTs token.
 * [Lodash Filter](https://www.npmjs.com/package/lodash.filter?activeTab=versions) to return a collection of the same item.
 * [Lottie](https://www.npmjs.com/package/lottie-react-native) is a library focused on animation.
@@ -100,6 +101,7 @@ installed.
 * `npm install`
 
 ## Running
+* run the Ngrok client and enter the command: `ngrok http 8080`
 
 * `npx expo start`</br>
 or
